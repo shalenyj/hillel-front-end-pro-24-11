@@ -9,6 +9,7 @@ module.exports = {
     },
     'rules': {
         'semi': ['error', 'always'],
-        'quotes': ['error', 'single']
+        'quotes': ['error', 'single'],
+        'comma-spacing': ['error', { 'before': false, 'after': true }]
     }
 };

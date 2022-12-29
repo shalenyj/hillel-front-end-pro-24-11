@@ -10,6 +10,6 @@ module.exports = {
     'rules': {
         'semi': ['error', 'always'],
         'quotes': ['error', 'single'],
-        'comma-spacing': ['error', { 'before': false, 'after': true }]
+        'comma-spacing': ['error', { 'before': false, 'after': true }],
     }
 };

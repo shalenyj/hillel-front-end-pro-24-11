@@ -16,7 +16,7 @@ h3{
 }
 
 #cards{
-  min-height: calc(100% - 40px);
+  min-height: calc(100% - 100px);
   display: grid;
   gap: 20px;
   justify-content: space-around;
@@ -89,4 +89,15 @@ h3{
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+nav{
+ padding: 10px;
+}
+
+nav span{
+  border: 1px solid black;
+  padding: 2px;
+  cursor: pointer;
+  margin-right: 10px;
 }

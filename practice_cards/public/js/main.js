@@ -1,12 +1,45 @@
-import TICKETS from './tickets.js';
+import { getLectionLength , getTickets } from './api.js'
+import { toggleDisplay  } from './utils.js';
 
+const navigationElement = document.getElementsByTagName('nav')[0];
 const cardsContainer = document.getElementById('cards');
 const modalElement = document.getElementById('card-details');
 const closeButton = document.getElementById('close-modal');
 
-const toggleModal = () => {
-  modalElement.style.display = modalElement.style.display === 'block' ? 'none' : 'block';
-};
+let items = []
+
+const getLections = async() => {
+  const {lessonsCount} = await getLectionLength();
+  console.log(Array.of(lessonsCount))
+  for(let i=0; i< lessonsCount; i++){
+    const navChild = document.createElement('span');
+    const id = i + 1
+    navChild.innerText = `Lesson ${id}`
+    navChild.dataset.id = id
+    navigationElement.append(navChild)
+  }
+}
+
+const getLessonTickets = async(id) => {
+  const { tickets } = await getTickets(id);
+  items = tickets.map(({ title, description}, index) => ({
+    title,
+    description,
+    disabled: false, 
+    index
+  }));
+  cardsContainer.innerHTML = '';
+  items.forEach(addCard);
+
+}
+
+navigationElement.addEventListener('click', event => {
+  const { id } = event.target.dataset
+  if(id){
+    getLessonTickets(id)
+  } 
+})
+
 
 const handleCardClick = event => {
   if(!event.target.dataset.index && !event.target.parentNode.dataset.index){
@@ -29,7 +62,7 @@ const handleCardClick = event => {
 const showModal = activeElement => {
   modalElement.querySelector('.modal-title').innerText = activeElement.title;
   modalElement.querySelector('.modal-description').innerText = activeElement.description;
-  toggleModal();
+  toggleDisplay(modalElement);
 };
 
 const addCard = card => {
@@ -40,15 +73,7 @@ const addCard = card => {
   cardsContainer.appendChild(cardElement);
 };
 
-closeButton.addEventListener('click', toggleModal);
+closeButton.addEventListener('click', () => toggleDisplay(modalElement));
 cardsContainer.addEventListener('click', handleCardClick);
 
-
-const items = TICKETS.map(({ title, description}, index) => ({
-  title,
-  description,
-  disabled: false, 
-  index
-}));
-
-items.forEach(addCard);
+getLections()

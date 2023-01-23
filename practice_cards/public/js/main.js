@@ -10,7 +10,6 @@ let items = []
 
 const getLections = async() => {
   const {lessonsCount} = await getLectionLength();
-  console.log(Array.of(lessonsCount))
   for(let i=0; i< lessonsCount; i++){
     const navChild = document.createElement('span');
     const id = i + 1
@@ -26,8 +25,10 @@ const getLessonTickets = async(id) => {
     title,
     description,
     disabled: false, 
-    index
-  }));
+    index,
+    sort: Math.random()
+  }))
+    .sort((a, b) => a.sort - b.sort);
   cardsContainer.innerHTML = '';
   items.forEach(addCard);
 

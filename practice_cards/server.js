@@ -24,7 +24,7 @@ app.get('/tickets', (req, res) => {
 app.get('/tickets/:id', (req, res) => {
   const id = req.params.id - 1;
   if(tickets[id]){
-    res.status(200).json({ tickets: tickets[id]})
+    res.status(200).json({ tickets: tickets[id] });
   }
   res.status(404).json({tickets: []})
 })

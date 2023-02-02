@@ -17,7 +17,7 @@ const client = {
   age: 57,
   hasDriverLicence: true,
 };
-const numbers = [2,4,9];
+const numbers = [2, 4, 9];
 
 const gretting = function(name){
   console.warn('Hello ' + name + ' from function');

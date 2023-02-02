@@ -1,10 +1,10 @@
 const greet = function(who) {
   return `Hello, ${who}`;
-}
+};
 
 const greet1 = (who) => {
   return `Hello, ${who}!`;
-}
+};
 
 // arguments
 

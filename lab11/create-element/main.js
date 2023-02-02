@@ -5,10 +5,10 @@ newParagraph.innerHTML = 'Другий параграф';
 newParagraph.style.fontSize = '18px';
 newParagraph.style.color = 'green';
 
-main.append(newParagraph)
+main.append(newParagraph);
 
-const myTextNode = document.createTextNode('Текст який буде доданий без тегу')
-main.append(myTextNode)
+const myTextNode = document.createTextNode('Текст який буде доданий без тегу');
+main.append(myTextNode);
 
 // insertBefore
 

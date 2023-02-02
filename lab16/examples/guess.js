@@ -4,16 +4,16 @@ function guessingGame(){
   return function (guess){
       guesses++;
       if(guess === answer) {
-        console.log(`You got it! number was ${guess} in ${guesses} guesses`)
-        return true
+        console.log(`You got it! number was ${guess} in ${guesses} guesses`);
+        return true;
       };
       if(guess>answer) {
-        console.log("Too high!")
-        return false
+        console.log('Too high!');
+        return false;
       };
-      console.log("Too low!");
-      return false
-    }
+      console.log('Too low!');
+      return false;
+    };
 }
 
 const try1= guessingGame();

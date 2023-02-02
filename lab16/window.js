@@ -1,6 +1,6 @@
 function aloha(){
-  console.log('Hello')
-  console.log(this)
+  console.log('Hello');
+  console.log(this);
 }
 
-aloha()
+aloha();

@@ -4,21 +4,21 @@ const images = [
   '3.jpeg',
   '4.jpeg',
   '5.png',
-]
+];
 
 let position = -1;
 const image = document.getElementsByTagName('img')[0];
 
 function setImageSrc(){
   if(position < images.length -1 ){
-    position ++
+    position ++;
   } else {
     position = 0;
   }
   image.src = `../images/${images[position]}`;
 }
 
-setImageSrc()
+setImageSrc();
 
 //setTimeout(setImageSrc, 2000);
 

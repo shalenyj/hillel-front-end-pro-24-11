@@ -8,8 +8,8 @@ function bgChange() {
 }
 
 function clickHandler(event){
-  console.log(event.target)
-  event.target.style.backgroundColor = bgChange()
+  console.log(event.target);
+  event.target.style.backgroundColor = bgChange();
 }
 
 const container = document.querySelector('#container');

@@ -2,7 +2,7 @@ function counter(){
   let value = 0;
   return function(){
     return ++value;
-  }
+  };
 }
 
 const counter1 = counter();

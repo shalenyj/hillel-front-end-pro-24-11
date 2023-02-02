@@ -1,4 +1,4 @@
-import { getLectionLength , getTickets } from './api.js'
+import { getLectionLength, getTickets } from './api.js';
 import { toggleDisplay  } from './utils.js';
 
 const navigationElement = document.getElementsByTagName('nav')[0];
@@ -6,18 +6,18 @@ const cardsContainer = document.getElementById('cards');
 const modalElement = document.getElementById('card-details');
 const closeButton = document.getElementById('close-modal');
 
-let items = []
+let items = [];
 
 const getLections = async() => {
   const {lessonsCount} = await getLectionLength();
   for(let i=0; i< lessonsCount; i++){
     const navChild = document.createElement('span');
-    const id = i + 1
-    navChild.innerText = `Lesson ${id}`
-    navChild.dataset.id = id
-    navigationElement.append(navChild)
+    const id = i + 1;
+    navChild.innerText = `Lesson ${id}`;
+    navChild.dataset.id = id;
+    navigationElement.append(navChild);
   }
-}
+};
 
 const getLessonTickets = async(id) => {
   const { tickets } = await getTickets(id);
@@ -32,14 +32,14 @@ const getLessonTickets = async(id) => {
   cardsContainer.innerHTML = '';
   items.forEach(addCard);
 
-}
+};
 
 navigationElement.addEventListener('click', event => {
-  const { id } = event.target.dataset
+  const { id } = event.target.dataset;
   if(id){
-    getLessonTickets(id)
+    getLessonTickets(id);
   } 
-})
+});
 
 
 const handleCardClick = event => {
@@ -77,4 +77,4 @@ const addCard = card => {
 closeButton.addEventListener('click', () => toggleDisplay(modalElement));
 cardsContainer.addEventListener('click', handleCardClick);
 
-getLections()
+getLections();

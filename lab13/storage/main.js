@@ -8,12 +8,12 @@ const listElement =  document.getElementsByTagName('ul')[0];
 formElement.addEventListener('submit', function(event){
   event.preventDefault();
   const newItemText = document.forms[0].title.value;
-  addItem(newItemText)
+  addItem(newItemText);
   document.forms[0].title.value = '';
-})
+});
 
 
-todoList.forEach(createItem)
+todoList.forEach(createItem);
 
 function createCheckbox(item){
   const checkbox = document.createElement('input');
@@ -23,12 +23,12 @@ function createCheckbox(item){
     checkbox.checked = true;
   } else {
     checkbox.addEventListener('input', function(){
-      finishItem(item.id)
+      finishItem(item.id);
       this.disabled = true;
-    })
+    });
   }
 
-  return checkbox
+  return checkbox;
 }
 
 function createRemoveButton(item){
@@ -38,47 +38,47 @@ function createRemoveButton(item){
   button.addEventListener('click', function(){
     removeItem(item.id);
     document.getElementById(`list-item-${item.id}`).remove();
-  })
+  });
 
-  return button
+  return button;
 }
 
 
 function createItem(item){
   const listItem = document.createElement('li');
-  listItem.id = `list-item-${item.id}`
+  listItem.id = `list-item-${item.id}`;
   listItem.innerHTML =`<div class="d-flex align-items-center"><span class="me-2">${item.text}</span></div>`;
 
-  listItem.firstChild.append(createCheckbox(item))
-  listItem.firstChild.append(createRemoveButton(item))
+  listItem.firstChild.append(createCheckbox(item));
+  listItem.firstChild.append(createRemoveButton(item));
 
   listElement.append(listItem);
 }
 
 function addItem(text){
   const id = lastId++;
-  const item = {text, id, done: false}
-  todoList.push(item)
+  const item = {text, id, done: false};
+  todoList.push(item);
   createItem(item);
-  saveToStorage()
+  saveToStorage();
 }
 
 function saveToStorage(){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList));
 }
 
 function removeItem(id){
   const indexToRemove = todoList.findIndex(function(item){
-    return item.id == id
-  })
+    return item.id == id;
+  });
   todoList.splice(indexToRemove, 1);
   saveToStorage();
 }
 
 function finishItem(id){
   const element = todoList.find(function(item){
-    return item.id == id
-  })
+    return item.id == id;
+  });
   element.done = true;
   saveToStorage();
 }

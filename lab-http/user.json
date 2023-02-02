@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "name": "Ivan",
+      "isMarried": false,
+      "age": 46,
+      "children": [
+        {
+          "name": "Maria",
+          "age": 5
+        }
+      ]
+    },
+    {
+      "name": "John",
+      "isMarried": true,
+      "age": 15,
+      "children": []
+    }
+  ]
+}

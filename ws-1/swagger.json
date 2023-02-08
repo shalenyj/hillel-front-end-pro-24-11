@@ -1,0 +1,97 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "WS1 Shop",
+    "description": "Shop for workshop at Hillel",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/orders": {
+      "get": {
+        "tags": ["Orders"],
+        "summary": "Get all orders in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Orders"
+            }
+          }
+        }
+      }
+    },
+    "/order": {
+      "post": {
+        "tags": ["Orders"],
+        "summary": "Create new order in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Order that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New order is created"
+          }
+        }
+      }
+    },
+    "/order{id}": {
+      "delete": {
+        "tags": ["Orders"],
+        "summary": "Remove order from system",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Order is removed"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Order": {
+      "required": ["_id", "name", "quantity", "deliverTo"],
+      "properties": {
+        "_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer"
+        },
+        "deliverTo": {
+          "type": "string"
+        }
+      }
+    },
+    "Orders": {
+      "type": "array",
+      "$ref": "#/definitions/Order"
+    }
+  }
+}

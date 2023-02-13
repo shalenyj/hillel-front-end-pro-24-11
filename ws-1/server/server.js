@@ -29,22 +29,22 @@ app.get('/', (req, res) => {
 
 // Get orders
 app.get('/orders', async(req, res) => {
-  const orders = await  getOrders()
-  res.status(200).json(orders)
-})
+  const orders = await  getOrders();
+  res.status(200).json(orders);
+});
 
 // Add order
 app.post('/order', async(req, res) => {
   const { name, quantity, deliverTo }= req.body;
-  await insertOrder({ name, quantity, deliverTo })
-  res.status(200).json({ status: true })
+  await insertOrder({ name, quantity, deliverTo });
+  res.status(200).json({ status: true });
 });
 
 // Delete order
 app.delete('/order/:id', async(req, res) => {
   const { id } = req.params;
   await removeOrder(id);
-  res.status(200).json({ status: true })
+  res.status(200).json({ status: true });
 });
 
 app.use(

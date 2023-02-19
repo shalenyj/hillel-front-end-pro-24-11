@@ -1,8 +1,42 @@
 import config from './config.js'
-import { createOrder } from './api.js';
+import { createOrder, getOrders, deleteOrder } from './api.js';
 
 const ulElement = document.querySelector('ul');
 const formElement = document.forms[0];
+const button = document.getElementById('show-order');
+const table = document.querySelector('table')
+
+const createDeleteButton = id => {
+  const button = document.createElement('button');
+  button.innerText = 'Delete';
+  button.addEventListener('click', async() => {
+    await deleteOrder(id)
+    button.parentNode.remove()
+  })
+  return button
+}
+
+const showOrders = async() => {
+  const childrenLength = table.children.length;
+  for(let i=1; i < childrenLength; i++){
+    table.lastElementChild.remove()
+  }
+
+  const orders = await getOrders();
+
+  orders.forEach(order => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${order.name}</td>
+      <td>${order.quantity}</td>
+      <td>${order.deliverTo}</td>`;
+    const button = createDeleteButton(order._id)
+    row.append(button)
+    table.append(row)
+  })
+  table.style.display = 'table';
+}
+
+button.addEventListener('click', showOrders)
 
 formElement.addEventListener('submit', async(event) => {
   event.preventDefault();

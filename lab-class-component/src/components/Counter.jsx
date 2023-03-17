@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export default class Counters extends Component {
+export default class Counter extends Component {
   state = {
     counter1: 0,
     counter2: 0,

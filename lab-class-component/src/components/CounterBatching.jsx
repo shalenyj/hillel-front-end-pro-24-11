@@ -6,14 +6,17 @@ export default class Counters extends Component {
     counter2: 0,
     counter3: 0,
   }
+  
   handleClick = () => {
     this.setState((state) => ({ counter1: state.counter1 + 1 }));
     this.setState((state) => ({ counter2: state.counter2 + 1 }));
     this.setState((state) => ({ counter3: state.counter3 + 1 }));
   }
+
   componentDidUpdate(){
     console.log('updated')
   }
+
   render() {
     return (
       <div>

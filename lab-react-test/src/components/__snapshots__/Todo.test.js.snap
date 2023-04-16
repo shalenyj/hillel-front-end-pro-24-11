@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components: Todo should match snapshot 1`] = `
+<div
+  data-testid="todo-3"
+>
+  wash desk
+</div>
+`;
+
+exports[`components: Todo should match snapshot 2`] = `
+<div
+  data-testid="todo-3"
+>
+  <strike>
+    wash desk
+  </strike>
+</div>
+`;
